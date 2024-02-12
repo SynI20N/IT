@@ -2,5 +2,10 @@
 <interface>
   <object id="window" class="GtkWindow">
     <property name="title">Задание3</property>
+    <child>
+      <object id="label" class="GtkLabel">
+        <property name="label"></property>
+      </object>
+    </child>
   </object>
 </interface>
