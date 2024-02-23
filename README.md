@@ -5,9 +5,9 @@
      <li>Два поля, реагирующих на вход в них мыши сменой текста на "пришел-ушел".</li>
      <li>Все окно реагирует на перемещение мышки сменой цвета с красного на зеленый.</li>
     </ol>
-    Запуск: cd lab1 && ./task1.out && ./task2.out && ./task3.out
+    Запуск: <code>cd lab1 && ./task1.out && ./task2.out && ./task3.out</code>
   </p>
 <h2>lab2: CLR C++ Winforms Windows 10<br></h2>
   <p>Задача: Вывести информацию по дискам (свободное и занятое место).<br>
-    Запуск: .\lab2\x64\Debug\FileSystem.exe
+    Запуск: <code>.\lab2\x64\Debug\FileSystem.exe</code>
   </p>
