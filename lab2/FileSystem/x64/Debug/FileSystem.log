@@ -1,0 +1,12 @@
+﻿  MyForm.cpp
+D:\Labs\OperatingSystem\lab2\MyForm.h(111,21): warning C4018: <: несоответствие типов со знаком и без знака
+  (компиляция исходного файла "MyForm.cpp")
+  
+D:\Labs\OperatingSystem\lab2\MyForm.h(109,3): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  (компиляция исходного файла "MyForm.cpp")
+  
+D:\Labs\OperatingSystem\lab2\MyForm.cpp(10,1): warning C4829: Возможно, неправильные параметры функции main. Рекомендуемый вариант - "int main(Platform::Array<Platform::String^>^ argv)"
+  .NETFramework,Version=v4.7.2.AssemblyAttributes.cpp
+  Создание кода...
+  MyForm.obj : обнаружен модуль MSIL; для MSIL последовательная компоновка отключена; выполняется полная компоновка
+  FileSystem.vcxproj -> D:\Labs\OperatingSystem\lab2\x64\Debug\FileSystem.exe
