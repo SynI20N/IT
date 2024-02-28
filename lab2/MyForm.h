@@ -72,20 +72,20 @@ namespace FileSystem {
 		{
 			this->textBox1 = (gcnew System::Windows::Forms::TextBox());
 			this->SuspendLayout();
-			//
+			// 
 			// textBox1
-			//
+			// 
 			this->textBox1->Enabled = false;
-			this->textBox1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->textBox1->Font = (gcnew System::Drawing::Font(L"Courier New", 14.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
 			this->textBox1->Location = System::Drawing::Point(13, 13);
 			this->textBox1->Multiline = true;
 			this->textBox1->Name = L"textBox1";
 			this->textBox1->Size = System::Drawing::Size(704, 214);
 			this->textBox1->TabIndex = 0;
-			//
+			// 
 			// MyForm
-			//
+			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(729, 261);
@@ -113,7 +113,7 @@ namespace FileSystem {
 		);
 		const int count = 10;
 		CHAR drives[count][200] = { 0 };
-		strcpy(drives[0], "Disk\tDrive Type\t\tTotal Space, Gb\tFree Space, Gb\0");
+		strcpy(drives[0], "Disk\tDrive Type\t Total Space, Gb\tFree Space, Gb\0");
 		int j = 0, k = 1;
 		for (int i = 0; i < size; i++)
 		{
@@ -148,7 +148,7 @@ namespace FileSystem {
 			String^ strT = gcnew String(driveType.c_str());
 			double total = totalnumbtype.QuadPart / pow(1024, 3);
 			double totalFree = totalnumberfreebyte.QuadPart / pow(1024, 3);
-			String^ row = String::Format("{0,-15} {1,-38} {2,-25} {3,-25}\r\n", str, strT, total.ToString("f4"), totalFree.ToString("f4"));
+			String^ row = String::Format("{0,-7} {1,-16} {2,-22} {3,-10}\r\n", str, strT, total.ToString("f4"), totalFree.ToString("f4"));
 			textBox1->AppendText(row);
 		}
 	}

@@ -7,16 +7,16 @@
       "RelativeMoniker": "D:0:0:{3127C95F-B1D3-4AC1-870A-C527495F70E4}|FileSystem.vcxproj|solutionrelative:MyForm.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{3127C95F-B1D3-4AC1-870A-C527495F70E4}|FileSystem.vcxproj|D:\\Labs\\OperatingSystem\\lab2\\MyForm.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}|Form",
+      "RelativeMoniker": "D:0:0:{3127C95F-B1D3-4AC1-870A-C527495F70E4}|FileSystem.vcxproj|solutionrelative:MyForm.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}|Form"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{3127C95F-B1D3-4AC1-870A-C527495F70E4}|FileSystem.vcxproj|D:\\Labs\\OperatingSystem\\lab2\\MyForm.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{3127C95F-B1D3-4AC1-870A-C527495F70E4}|FileSystem.vcxproj|solutionrelative:MyForm.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{3127C95F-B1D3-4AC1-870A-C527495F70E4}|FileSystem.vcxproj|D:\\LABS\\OPERATINGSYSTEM\\LAB2\\VARIADICTABLE.H||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{3127C95F-B1D3-4AC1-870A-C527495F70E4}|FileSystem.vcxproj|solutionrelative:VARIADICTABLE.H||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3127C95F-B1D3-4AC1-870A-C527495F70E4}|FileSystem.vcxproj|D:\\Labs\\OperatingSystem\\lab2\\MyForm.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}|Form",
-      "RelativeMoniker": "D:0:0:{3127C95F-B1D3-4AC1-870A-C527495F70E4}|FileSystem.vcxproj|solutionrelative:MyForm.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}|Form"
     }
   ],
   "DocumentGroupContainers": [
@@ -30,7 +30,7 @@
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "VariadicTable.h",
               "DocumentMoniker": "D:\\Labs\\OperatingSystem\\lab2\\VariadicTable.h",
               "RelativeDocumentMoniker": "VariadicTable.h",
@@ -49,14 +49,14 @@
               "RelativeDocumentMoniker": "MyForm.h",
               "ToolTip": "D:\\Labs\\OperatingSystem\\lab2\\MyForm.h",
               "RelativeToolTip": "MyForm.h",
-              "ViewState": "AQIAAHsAAAAAAAAAAAAAAJcAAAAXAAAA",
+              "ViewState": "AQIAAGkAAAAAAAAAAAAAAIMAAAAhAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
               "WhenOpened": "2024-02-23T06:39:03.32Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "MyForm.cpp",
               "DocumentMoniker": "D:\\Labs\\OperatingSystem\\lab2\\MyForm.cpp",
               "RelativeDocumentMoniker": "MyForm.cpp",
@@ -69,7 +69,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 1,
               "Title": "MyForm.h [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
               "DocumentMoniker": "D:\\Labs\\OperatingSystem\\lab2\\MyForm.h",
               "RelativeDocumentMoniker": "MyForm.h",
