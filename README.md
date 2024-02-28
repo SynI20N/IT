@@ -12,5 +12,7 @@
   </p>
 <h2>lab2: CLR C++ Winforms Windows 10<br></h2>
   <p>Задача: Вывести информацию по дискам (свободное и занятое место). Динамически обновлять информацию по дискам. <br>
+    <img src="https://github.com/SynI20N/IT/blob/systems/lab2/Images/drives.png">
+    <img src="https://github.com/SynI20N/IT/blob/systems/lab2/Images/drives_upd.png">
     Запуск: <code>.\lab2\x64\Debug\FileSystem.exe</code>
   </p>
