@@ -12,7 +12,9 @@
   </p>
 <h2>lab2: CLR C++ Winforms Windows 10<br></h2>
   <p>Задача: Вывести информацию по дискам (свободное и занятое место). Динамически обновлять информацию по дискам. <br>
+    <p>До вставки флешки:</p>
     <img src="https://github.com/SynI20N/IT/blob/systems/lab2/Images/drives.PNG">
-    <img src="https://github.com/SynI20N/IT/blob/systems/lab2/Images/drives_upd.PNG">
+    <p>После вставки флешки:</p>
+    <img src="https://github.com/SynI20N/IT/blob/systems/lab2/Images/drives_upd.PNG"><br>
     Запуск: <code>.\lab2\x64\Debug\FileSystem.exe</code>
   </p>
