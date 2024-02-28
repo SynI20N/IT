@@ -15,6 +15,6 @@
     <p>До вставки флешки:</p>
     <img src="https://github.com/SynI20N/IT/blob/systems/lab2/Images/drives.PNG">
     <p>После вставки флешки:</p>
-    <img src="https://github.com/SynI20N/IT/blob/systems/lab2/Images/drives_upd.PNG"><br>
+    <img src="https://github.com/SynI20N/IT/blob/systems/lab2/Images/drives_upd.PNG">
     Запуск: <code>.\lab2\x64\Debug\FileSystem.exe</code>
   </p>
