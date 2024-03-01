@@ -53,6 +53,8 @@ namespace FileManager {
 
 	private: ListForm^ form = gcnew ListForm();
 	private: System::Windows::Forms::ListBox^ fileBox;
+	private: System::Windows::Forms::PictureBox^ pictureBox1;
+
 
 
 
@@ -68,6 +70,7 @@ namespace FileManager {
 		/// </summary>
 		void InitializeComponent(void)
 		{
+			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(MyForm::typeid));
 			this->back = (gcnew System::Windows::Forms::Button());
 			this->forw = (gcnew System::Windows::Forms::Button());
 			this->label1 = (gcnew System::Windows::Forms::Label());
@@ -78,13 +81,16 @@ namespace FileManager {
 			this->cmd_rename = (gcnew System::Windows::Forms::Button());
 			this->cmd_delete = (gcnew System::Windows::Forms::Button());
 			this->fileBox = (gcnew System::Windows::Forms::ListBox());
+			this->pictureBox1 = (gcnew System::Windows::Forms::PictureBox());
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
 			this->SuspendLayout();
 			// 
 			// back
 			// 
-			this->back->Location = System::Drawing::Point(12, 12);
+			this->back->Location = System::Drawing::Point(16, 15);
+			this->back->Margin = System::Windows::Forms::Padding(4);
 			this->back->Name = L"back";
-			this->back->Size = System::Drawing::Size(75, 23);
+			this->back->Size = System::Drawing::Size(100, 28);
 			this->back->TabIndex = 0;
 			this->back->Text = L"<<";
 			this->back->UseVisualStyleBackColor = true;
@@ -92,9 +98,10 @@ namespace FileManager {
 			// 
 			// forw
 			// 
-			this->forw->Location = System::Drawing::Point(93, 12);
+			this->forw->Location = System::Drawing::Point(124, 15);
+			this->forw->Margin = System::Windows::Forms::Padding(4);
 			this->forw->Name = L"forw";
-			this->forw->Size = System::Drawing::Size(75, 23);
+			this->forw->Size = System::Drawing::Size(100, 28);
 			this->forw->TabIndex = 1;
 			this->forw->Text = L">>";
 			this->forw->UseVisualStyleBackColor = true;
@@ -103,26 +110,29 @@ namespace FileManager {
 			// label1
 			// 
 			this->label1->AutoSize = true;
-			this->label1->Location = System::Drawing::Point(174, 17);
+			this->label1->Location = System::Drawing::Point(232, 21);
+			this->label1->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(32, 13);
+			this->label1->Size = System::Drawing::Size(37, 16);
 			this->label1->TabIndex = 2;
 			this->label1->Text = L"Path:";
 			// 
 			// path
 			// 
-			this->path->Location = System::Drawing::Point(215, 15);
+			this->path->Location = System::Drawing::Point(287, 18);
+			this->path->Margin = System::Windows::Forms::Padding(4);
 			this->path->Name = L"path";
 			this->path->ReadOnly = true;
-			this->path->Size = System::Drawing::Size(817, 20);
+			this->path->Size = System::Drawing::Size(1088, 22);
 			this->path->TabIndex = 3;
 			this->path->TextChanged += gcnew System::EventHandler(this, &MyForm::path_TextChanged);
 			// 
 			// open
 			// 
-			this->open->Location = System::Drawing::Point(1038, 15);
+			this->open->Location = System::Drawing::Point(1384, 18);
+			this->open->Margin = System::Windows::Forms::Padding(4);
 			this->open->Name = L"open";
-			this->open->Size = System::Drawing::Size(75, 21);
+			this->open->Size = System::Drawing::Size(100, 26);
 			this->open->TabIndex = 4;
 			this->open->Text = L"Open";
 			this->open->UseVisualStyleBackColor = true;
@@ -130,9 +140,10 @@ namespace FileManager {
 			// 
 			// cmd_move
 			// 
-			this->cmd_move->Location = System::Drawing::Point(852, 95);
+			this->cmd_move->Location = System::Drawing::Point(1136, 117);
+			this->cmd_move->Margin = System::Windows::Forms::Padding(4);
 			this->cmd_move->Name = L"cmd_move";
-			this->cmd_move->Size = System::Drawing::Size(236, 45);
+			this->cmd_move->Size = System::Drawing::Size(315, 55);
 			this->cmd_move->TabIndex = 6;
 			this->cmd_move->Text = L"Move";
 			this->cmd_move->UseVisualStyleBackColor = true;
@@ -140,48 +151,66 @@ namespace FileManager {
 			// 
 			// cmd_copy
 			// 
-			this->cmd_copy->Location = System::Drawing::Point(852, 162);
+			this->cmd_copy->Location = System::Drawing::Point(1136, 199);
+			this->cmd_copy->Margin = System::Windows::Forms::Padding(4);
 			this->cmd_copy->Name = L"cmd_copy";
-			this->cmd_copy->Size = System::Drawing::Size(236, 45);
+			this->cmd_copy->Size = System::Drawing::Size(315, 55);
 			this->cmd_copy->TabIndex = 7;
 			this->cmd_copy->Text = L"Copy";
 			this->cmd_copy->UseVisualStyleBackColor = true;
+			this->cmd_copy->Click += gcnew System::EventHandler(this, &MyForm::cmd_copy_Click);
 			// 
 			// cmd_rename
 			// 
-			this->cmd_rename->Location = System::Drawing::Point(852, 229);
+			this->cmd_rename->Location = System::Drawing::Point(1136, 282);
+			this->cmd_rename->Margin = System::Windows::Forms::Padding(4);
 			this->cmd_rename->Name = L"cmd_rename";
-			this->cmd_rename->Size = System::Drawing::Size(236, 45);
+			this->cmd_rename->Size = System::Drawing::Size(315, 55);
 			this->cmd_rename->TabIndex = 8;
 			this->cmd_rename->Text = L"Rename";
 			this->cmd_rename->UseVisualStyleBackColor = true;
+			this->cmd_rename->Click += gcnew System::EventHandler(this, &MyForm::cmd_rename_Click);
 			// 
 			// cmd_delete
 			// 
-			this->cmd_delete->Location = System::Drawing::Point(852, 297);
+			this->cmd_delete->Location = System::Drawing::Point(1136, 366);
+			this->cmd_delete->Margin = System::Windows::Forms::Padding(4);
 			this->cmd_delete->Name = L"cmd_delete";
-			this->cmd_delete->Size = System::Drawing::Size(236, 45);
+			this->cmd_delete->Size = System::Drawing::Size(315, 55);
 			this->cmd_delete->TabIndex = 9;
 			this->cmd_delete->Text = L"Delete";
 			this->cmd_delete->UseVisualStyleBackColor = true;
+			this->cmd_delete->Click += gcnew System::EventHandler(this, &MyForm::cmd_delete_Click);
 			// 
 			// fileBox
 			// 
 			this->fileBox->Font = (gcnew System::Drawing::Font(L"Courier New", 14.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
 			this->fileBox->FormattingEnabled = true;
-			this->fileBox->ItemHeight = 21;
-			this->fileBox->Location = System::Drawing::Point(13, 52);
+			this->fileBox->ItemHeight = 27;
+			this->fileBox->Location = System::Drawing::Point(17, 64);
+			this->fileBox->Margin = System::Windows::Forms::Padding(4);
 			this->fileBox->Name = L"fileBox";
-			this->fileBox->Size = System::Drawing::Size(794, 571);
+			this->fileBox->Size = System::Drawing::Size(1057, 679);
 			this->fileBox->TabIndex = 10;
 			this->fileBox->SelectedIndexChanged += gcnew System::EventHandler(this, &MyForm::fileBox_SelectedIndexChanged);
 			// 
+			// pictureBox1
+			// 
+			this->pictureBox1->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox1.Image")));
+			this->pictureBox1->Location = System::Drawing::Point(1111, 450);
+			this->pictureBox1->Name = L"pictureBox1";
+			this->pictureBox1->Size = System::Drawing::Size(383, 308);
+			this->pictureBox1->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
+			this->pictureBox1->TabIndex = 11;
+			this->pictureBox1->TabStop = false;
+			// 
 			// MyForm
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
+			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(1151, 668);
+			this->ClientSize = System::Drawing::Size(1535, 822);
+			this->Controls->Add(this->pictureBox1);
 			this->Controls->Add(this->fileBox);
 			this->Controls->Add(this->cmd_delete);
 			this->Controls->Add(this->cmd_rename);
@@ -192,8 +221,10 @@ namespace FileManager {
 			this->Controls->Add(this->label1);
 			this->Controls->Add(this->forw);
 			this->Controls->Add(this->back);
+			this->Margin = System::Windows::Forms::Padding(4);
 			this->Name = L"MyForm";
 			this->Text = L"FileManager";
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->EndInit();
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
@@ -296,6 +327,71 @@ namespace FileManager {
 					System::Windows::Forms::MessageBoxButtons::OK,
 					System::Windows::Forms::MessageBoxIcon::Error);
 			}
+		}
+	}
+	private: System::Void cmd_copy_Click(System::Object^ sender, System::EventArgs^ e) 
+	{
+		if (form->selectedFilePath == nullptr)
+		{
+			return;
+		}
+		SaveFileDialog^ f = gcnew SaveFileDialog();
+		if (f->ShowDialog() == System::Windows::Forms::DialogResult::OK)
+		{
+			const CHAR* filePath = (const char*)(void*)
+				System::Runtime::InteropServices::Marshal::StringToHGlobalAnsi(form->selectedFilePath);
+			const CHAR* wherePath = (const char*)(void*)
+				System::Runtime::InteropServices::Marshal::StringToHGlobalAnsi(System::IO::Path::GetFullPath(f->FileName));
+			BOOL b = CopyFileA(filePath, wherePath, 1);
+			if (b)
+			{
+				updateListBox(fileBox);
+			}
+			else
+			{
+				System::Windows::Forms::MessageBox::Show("File couldn't be copied by WinApi", "Error copying file",
+					System::Windows::Forms::MessageBoxButtons::OK,
+					System::Windows::Forms::MessageBoxIcon::Error);
+			}
+		}
+	}
+	private: System::Void cmd_rename_Click(System::Object^ sender, System::EventArgs^ e) 
+	{
+		String^ name = form->ShowDialog("Введите новое имя", "Окно изменения имени");
+		if (name == String::Empty)
+		{
+			return;
+		}
+		const CHAR* filePath = (const char*)(void*)
+			System::Runtime::InteropServices::Marshal::StringToHGlobalAnsi(form->selectedFilePath);
+		const CHAR* wherePath = (const char*)(void*)
+			System::Runtime::InteropServices::Marshal::StringToHGlobalAnsi(form->selectedPath + "\\" + name);
+		BOOL b = MoveFileA(filePath, wherePath);
+		if (b)
+		{
+			updateListBox(fileBox);
+		}
+		else
+		{
+			System::Windows::Forms::MessageBox::Show("File couldn't be renamed by WinApi", "Error renaming file",
+				System::Windows::Forms::MessageBoxButtons::OK,
+				System::Windows::Forms::MessageBoxIcon::Error);
+		}
+	}
+	private: System::Void cmd_delete_Click(System::Object^ sender, System::EventArgs^ e) 
+	{
+		const CHAR* filePath = (const char*)(void*)
+			System::Runtime::InteropServices::Marshal::StringToHGlobalAnsi(form->selectedFilePath);
+		BOOL b = DeleteFileA(filePath);
+		if (b)
+		{
+			updateListBox(fileBox);
+		}
+		else
+		{
+			System::Windows::Forms::MessageBox::Show("File couldn't be deleted by WinApi", "Error deleting file",
+				System::Windows::Forms::MessageBoxButtons::OK,
+				System::Windows::Forms::MessageBoxIcon::Error);
 		}
 	}
 };
