@@ -20,6 +20,10 @@ Class FileManager.ListForm: AutoLayout, AnsiClass, Class, Public, BeforeFieldIni
     System.Collections.Generic.List`1[System.Windows.Forms.Button] cmd_buttons : Public
     System.String selectedPath : Public
     System.String selectedFilePath : Public
+    System.Windows.Forms.Form prompt : Public
+  Methods:
+    ShowDialog(String, String): PrivateScope, Public, HideBySig
+    Close(Object, EventArgs): PrivateScope, Public, HideBySig
 Class FileManager.MyForm: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   :System.Windows.Forms.Form
     Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName

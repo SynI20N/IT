@@ -18,3 +18,11 @@
     <img src="https://github.com/SynI20N/IT/blob/systems/lab2/Images/drives_upd.PNG">
     Запуск: <code>.\lab2\x64\Debug\FileSystem.exe</code>
   </p>
+<h2>lab3: CLR C++ Winforms Windows 10<br></h2>
+  <p>Задача: Написать аналог файлового менеджера. Функции: выбрать папку, выбрать файл, переместить, переименовать, удалить, копировать.<br>
+    <p>Бвзовый вид приложения:</p>
+    <img src="https://github.com/SynI20N/IT/blob/systems/lab3/images/manager.png">
+    <p>Приложение в работе:</p>
+    <img src="https://github.com/SynI20N/IT/blob/systems/lab3/images/manager_action.png">
+    Запуск: <code>.\lab3\x64\Debug\FileManager.exe</code>
+  </p>

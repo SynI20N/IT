@@ -1,3 +1,7 @@
 D:\Labs\OperatingSystem\lab3\FileManager\FileManager\x64\Debug\FileManager.vcxproj.AssemblyReference.cache
 D:\Labs\OperatingSystem\lab3\FileManager\FileManager\x64\Debug\FileManager.MyForm.resources
 D:\Labs\OperatingSystem\lab3\FileManager\FileManager\x64\Debug\FileManager.vcxproj.GenerateResource.cache
+D:\Gane\IT\lab3\x64\Debug\FileManager.vcxproj.AssemblyReference.cache
+D:\Gane\IT\lab3\x64\Debug\FileManager.MyForm.resources
+D:\Gane\IT\lab3\x64\Debug\FileManager.vcxproj.GenerateResource.cache
+D:\Gane\IT\lab3\x64\Debug\FileManager.exe
