@@ -4,18 +4,17 @@
 using namespace System;
 using namespace System::Windows;
 
+MyData threadData;
+
 int main(array<String^>^ args)
 {
 	Forms::Application::EnableVisualStyles();
 	Forms::Application::SetCompatibleTextRenderingDefault(false);
 	lab4::MyForm form;
+    threadData.box1 = std::string("thread1");
+    threadData.box2 = std::string("thread2");
 
-    MyData^ mydata = gcnew MyData();
-    Forms::TextBox^ managed = form.textBox1;
-    Forms::TextBox^ managed2 = form.textBox2;
-    mydata->text1 = managed;
-    mydata->text2 = managed2;
-    pin_ptr<void> pinned = &mydata;
+
     DWORD   dwThreadIdArray[MAX_THREADS];
     HANDLE  hThreadArray[MAX_THREADS];
 
@@ -30,7 +29,7 @@ int main(array<String^>^ args)
             NULL,                   // default security attributes
             0,                      // use default stack size  
             MyThreadFunction,       // thread function name
-            pinned,          // argument to thread function 
+            &i,          // argument to thread function 
             0,                      // use default creation flags 
             &dwThreadIdArray[i]);   // returns the thread identifier 
 
@@ -56,6 +55,6 @@ int main(array<String^>^ args)
     {
         CloseHandle(hThreadArray[i]);
     }
-    Forms::Application::Run(% form);
+    form.Refresh();
     return 0;
 }

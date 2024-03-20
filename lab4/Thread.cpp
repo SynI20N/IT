@@ -5,6 +5,7 @@
 using namespace System;
 using namespace System::Windows;
 using namespace System::Runtime::InteropServices;
+using namespace lab4;
 
 DWORD WINAPI MyThreadFunction(LPVOID lpParam)
 {
@@ -15,11 +16,23 @@ DWORD WINAPI MyThreadFunction(LPVOID lpParam)
     DWORD dwChars;
 
     lab4::MyForm form;
+    String^ str = "uninitialized";
 
-    MyData* data = (MyData*)lpParam;
-    form.textBox1->AppendText("hello");
-    Forms::TextBox^ box1 = gcnew Forms::TextBox();
-    Marshal::PtrToStructure<Forms::TextBox^>(data->text1);
+    int num = *((int*)lpParam);
+    if (num == 0)
+    {
+        str = gcnew String(threadData.box1.c_str());
+        form.textBox1->Text = str;
+    }
+    else if (num == 1)
+    {
+        str = gcnew String(threadData.box2.c_str());
+        form.textBox2->Text = str;
+    }
+    else
+    {
+        form.textBox2->Text = num.ToString();
+    }
 
     Forms::Application::Run(% form);
     return 0;

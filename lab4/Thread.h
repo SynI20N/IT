@@ -8,14 +8,16 @@
 #include <msclr\marshal_cppstd.h>
 #include <string>
 
-#define MAX_THREADS 3
+#define MAX_THREADS 2
 #define BUF_SIZE 255
 
 DWORD WINAPI MyThreadFunction(LPVOID lpParam);
 void ErrorHandler(LPCTSTR lpszFunction);
 HWND GetConsoleHwnd(void);
 
-public ref class MyData {
-public:System::Windows::Forms::TextBox^ text1;
-	  System::Windows::Forms::TextBox^ text2;
+struct MyData{
+	std::string box1;
+	std::string box2;
 };
+
+extern MyData threadData;
