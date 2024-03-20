@@ -22,3 +22,20 @@ Class lab4.MyForm: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
     System.Windows.Forms.Button button2 : Public
     System.Windows.Forms.TextBox textBox1 : Public
     System.Windows.Forms.TextBox textBox2 : Public
+  Methods:
+    button1_Click(Object, EventArgs): PrivateScope, Public, HideBySig
+    AbortThreads(): PrivateScope, Public, HideBySig
+Class MyDelegate: AutoLayout, AnsiClass, Class, Public, Sealed, BeforeFieldInit
+  :System.MulticastDelegate
+    Void .ctor(System.Object, IntPtr): PrivateScope, Public, SpecialName, RTSpecialName
+  Methods:
+    Invoke(TextBox, Int32): PrivateScope, Public, Final, Virtual, VtableLayoutMask
+    BeginInvoke(TextBox, Int32, AsyncCallback, Object): PrivateScope, Public, Final, Virtual, VtableLayoutMask
+    EndInvoke(IAsyncResult): PrivateScope, Public, Final, Virtual, VtableLayoutMask
+Class ButtonDelegate: AutoLayout, AnsiClass, Class, Public, Sealed, BeforeFieldInit
+  :System.MulticastDelegate
+    Void .ctor(System.Object, IntPtr): PrivateScope, Public, SpecialName, RTSpecialName
+  Methods:
+    Invoke(TextBox, Int32): PrivateScope, Public, Final, Virtual, VtableLayoutMask
+    BeginInvoke(TextBox, Int32, AsyncCallback, Object): PrivateScope, Public, Final, Virtual, VtableLayoutMask
+    EndInvoke(IAsyncResult): PrivateScope, Public, Final, Virtual, VtableLayoutMask

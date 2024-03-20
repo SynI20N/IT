@@ -1,5 +1,7 @@
 #pragma once
 
+static void ThreadProc(System::Object^ obj);
+
 namespace lab4 {
 
 	using namespace System;
@@ -8,6 +10,7 @@ namespace lab4 {
 	using namespace System::Windows::Forms;
 	using namespace System::Data;
 	using namespace System::Drawing;
+	using namespace System::Threading;
 
 	/// <summary>
 	/// Сводка для MyForm
@@ -41,6 +44,8 @@ namespace lab4 {
 	public: System::Windows::Forms::TextBox^ textBox2;
 	private: System::Windows::Forms::Label^ label1;
 	private: System::Windows::Forms::Label^ label2;
+	private: System::Threading::Thread^ thread1;
+	private: System::Threading::Thread^ thread2;
 
 	private:
 		/// <summary>
@@ -71,7 +76,7 @@ namespace lab4 {
 			this->button1->Name = L"button1";
 			this->button1->Size = System::Drawing::Size(187, 41);
 			this->button1->TabIndex = 0;
-			this->button1->Text = L"Stop / Resume";
+			this->button1->Text = L"Start / Pause";
 			this->button1->UseVisualStyleBackColor = true;
 			this->button1->Click += gcnew System::EventHandler(this, &MyForm::button1_Click);
 			// 
@@ -83,8 +88,9 @@ namespace lab4 {
 			this->button2->Name = L"button2";
 			this->button2->Size = System::Drawing::Size(192, 42);
 			this->button2->TabIndex = 1;
-			this->button2->Text = L"Stop / Resume";
+			this->button2->Text = L"Start / Pause";
 			this->button2->UseVisualStyleBackColor = true;
+			this->button2->Click += gcnew System::EventHandler(this, &MyForm::button2_Click);
 			// 
 			// textBox1
 			// 
@@ -139,10 +145,35 @@ namespace lab4 {
 			this->Text = L"Threads";
 			this->ResumeLayout(false);
 			this->PerformLayout();
-
 		}
 #pragma endregion
-	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
+public: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
+	ThreadControl(thread1, gcnew ParameterizedThreadStart(&ThreadProc), textBox1);
+}
+private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
+	ThreadControl(thread2, gcnew ParameterizedThreadStart(&ThreadProc), textBox2);
+}
+private: void ThreadControl(Thread^ %thread, ParameterizedThreadStart^ func, TextBox^ textBox)
+{
+	if (thread == nullptr)
+	{
+		thread = gcnew Thread(func);
+		thread->Start(textBox);
+		return;
 	}
-	};
+	textBox->AppendText(thread->ThreadState.ToString());
+	if (thread->ThreadState == ThreadState::Running || thread->ThreadState == ThreadState::WaitSleepJoin)
+	{
+		thread->Suspend();
+	}
+	else if (thread->ThreadState == ThreadState::Suspended)
+	{
+		thread->Resume();
+	}
+}
+public: System::Void AbortThreads() {
+	thread1->Abort();
+	thread2->Abort();
+}
+};
 }
