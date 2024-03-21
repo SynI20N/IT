@@ -8,7 +8,7 @@ public delegate void MyDelegate(System::Windows::Forms::TextBox^ box, int value)
 public delegate void ButtonDelegate(System::Windows::Forms::TextBox^ box, int value);
 static void AddValueToTextbox(System::Windows::Forms::TextBox^ box, int value)
 {
-	box->AppendText("\r\n" + value.ToString());
+	box->AppendText(value.ToString() + "\r\n");
 }
 
 int main(array<String^>^ args)

@@ -22,9 +22,15 @@ Class lab4.MyForm: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
     System.Windows.Forms.Button button2 : Public
     System.Windows.Forms.TextBox textBox1 : Public
     System.Windows.Forms.TextBox textBox2 : Public
+    System.Windows.Forms.Button abort1 : Public
+    System.Windows.Forms.Button abort2 : Public
+    System.Windows.Forms.Button priority1 : Public
+    System.Windows.Forms.Button priority2 : Public
   Methods:
     button1_Click(Object, EventArgs): PrivateScope, Public, HideBySig
     AbortThreads(): PrivateScope, Public, HideBySig
+    ClosePrompt(Object, EventArgs): PrivateScope, Public, HideBySig
+    ShowDialog(String, String): PrivateScope, Public, HideBySig
 Class MyDelegate: AutoLayout, AnsiClass, Class, Public, Sealed, BeforeFieldInit
   :System.MulticastDelegate
     Void .ctor(System.Object, IntPtr): PrivateScope, Public, SpecialName, RTSpecialName
