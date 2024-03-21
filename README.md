@@ -30,6 +30,6 @@
   <p>Задача: Создать форму, где можно управлять двумя потоками (стартовать, ставить на паузу, менять приоритет).<br>
     <p>Каждый поток считает от нуля в бесконечном цикле и выводит эти значения в соответствующий бокс</p>
     <p>Приложение в работе:</p>
-    <img src="https://github.com/SynI20N/IT/blob/systems/lab4/images/threads.gif">
+    ![](https://github.com/SynI20N/IT/blob/systems/lab4/images/threads.gif)
     Запуск: <code>.\lab4\x64\Debug\lab4.exe</code>
   </p>
