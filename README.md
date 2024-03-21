@@ -26,3 +26,11 @@
     <img src="https://github.com/SynI20N/IT/blob/systems/lab3/images/manager_action.png">
     Запуск: <code>.\lab3\x64\Debug\FileManager.exe</code>
   </p>
+<h2>lab4: CLR C++ Winforms Windows 10<br></h2>
+  <p>Задача: Создать форму, где можно управлять двумя потоками (стартовать, ставить на паузу, менять приоритет).<br>
+    <p>Бвзовый вид приложения:</p>
+    <img src="https://github.com/SynI20N/IT/blob/systems/lab4/images/1.png">
+    <p>Приложение в работе:</p>
+    <img src="https://github.com/SynI20N/IT/blob/systems/lab4/images/2.png">
+    Запуск: <code>.\lab4\x64\Debug\lab4.exe</code>
+  </p>
