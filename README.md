@@ -33,3 +33,9 @@
     <img src="https://github.com/SynI20N/IT/blob/systems/lab4/images/threads.gif">
     Запуск: <code>.\lab4\x64\Debug\lab4.exe</code>
   </p>
+<h2>lab5: Gtk4.0+ C Linux<br></h2>
+  <p>Задача: создать динамическую библиотеку, создать программу в которой динамически подгружается эта библиотека.<br>
+    <p>В библиотеке должен находится код, который запускает форму / интерфейс.</p>
+    <p>Библиотека libform.so, код запуска driver </p>
+    Запуск: <code>./lab5/driver</code>
+  </p>
