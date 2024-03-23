@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <object id="window" class="GtkWindow">
+    <property name="title">Задание1</property>
+    <child>
+      <object id="box" class="GtkBox">
+        <property name="orientation">vertical</property>
+        <property name="margin-start">40</property>
+        <property name="margin-end">40</property>
+        <property name="margin-top">40</property>
+        <property name="margin-bottom">40</property>
+        <property name="spacing">20</property>
+        <child>
+          <object id="view" class="GtkTextView">
+          </object>
+        </child>
+        <child>
+          <object id="label" class="GtkLabel">
+            <property name="label">= ?</property>
+          </object>
+        </child>
+        <child>
+          <object id="button" class="GtkButton">
+            <property name="label">Рассчитать</property>
+          </object>
+        </child>
+      </object>
+    </child>
+  </object>
+</interface>
