@@ -35,6 +35,16 @@
   </p>
 <h2>lab5: Gtk4.0+ C Linux<br></h2>
   <p>Задача: создать динамическую библиотеку, создать программу в которой динамически подгружается эта библиотека.<br>
+<h2>lab6: SharpDevelop C# Windows10</h2>
+  <p>Задача: Создать форму, в которой динамически будут выводится все окна, открытые в системе (в том числе и скрытые).<br>
+    <p>В форме также присутствует кнопка для изменения размера основного окна через WinApi функцию SetWindowPos</p>
+    <p>Приложение в работе:</p>
+    <img src="https://github.com/SynI20N/IT/blob/systems/lab6/images/2.png">
+    <p>После изменений:</p>
+    <img src="https://github.com/SynI20N/IT/blob/systems/lab6/images/1.png">
+    Запуск: <code>.\lab6\bin\Debug\lab8Windows.exe</code>
+  </p>
+    
     <p>В библиотеке должен находится код, который запускает форму / интерфейс.</p>
     <p>Библиотека libform.so, код запуска driver </p>
     Запуск: <code>./lab5/driver</code>
