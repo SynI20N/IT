@@ -43,9 +43,9 @@
   <p>Задача: Создать форму, в которой динамически будут выводится все окна, открытые в системе (в том числе и скрытые).<br>
     <p>В форме также присутствует кнопка для изменения размера основного окна через WinApi функцию SetWindowPos</p>
     <p>Приложение в работе:</p>
-    <img src="https://github.com/SynI20N/IT/blob/systems/lab6/images/2.png">
+    <img src="https://github.com/SynI20N/IT/blob/systems/lab6/images/2.jpg">
     <p>После изменений:</p>
-    <img src="https://github.com/SynI20N/IT/blob/systems/lab6/images/1.png">
+    <img src="https://github.com/SynI20N/IT/blob/systems/lab6/images/1.jpg">
     Запуск: <code>.\lab6\bin\Debug\lab8Windows.exe</code>
   </p>
     
