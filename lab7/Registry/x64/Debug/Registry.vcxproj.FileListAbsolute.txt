@@ -1,0 +1,14 @@
+C:\Users\newda\source\repos\Registry\Registry\x64\Debug\Registry.vcxproj.AssemblyReference.cache
+C:\Users\newda\source\repos\Registry\Registry\x64\Debug\Registry.RForm.resources
+C:\Users\newda\source\repos\Registry\Registry\x64\Debug\Registry.vcxproj.GenerateResource.cache
+D:\Backup\Users\newda\source\repos\Registry\Registry\x64\Debug\Registry.vcxproj.AssemblyReference.cache
+D:\Backup\Users\newda\source\repos\Registry\Registry\x64\Debug\Registry.RForm.resources
+D:\Backup\Users\newda\source\repos\Registry\Registry\x64\Debug\Registry.vcxproj.GenerateResource.cache
+C:\Users\Даниил\Desktop\Novikov\source\repos\Registry\Registry\x64\Debug\Registry.vcxproj.AssemblyReference.cache
+C:\Users\Даниил\Desktop\Novikov\source\repos\Registry\Registry\x64\Debug\Registry.RForm.resources
+C:\Users\Даниил\Desktop\Novikov\source\repos\Registry\Registry\x64\Debug\Registry.vcxproj.GenerateResource.cache
+C:\Users\Даниил\Desktop\Novikov\source\repos\Registry\Registry\x64\Debug\Registry.ReadRegDialog.resources
+D:\Labs\OperatingSystem\lab7\Registry\x64\Debug\Registry.vcxproj.AssemblyReference.cache
+D:\Labs\OperatingSystem\lab7\Registry\x64\Debug\Registry.ReadRegDialog.resources
+D:\Labs\OperatingSystem\lab7\Registry\x64\Debug\Registry.RForm.resources
+D:\Labs\OperatingSystem\lab7\Registry\x64\Debug\Registry.vcxproj.GenerateResource.cache

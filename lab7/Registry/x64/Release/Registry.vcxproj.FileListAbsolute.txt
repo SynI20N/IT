@@ -1,0 +1,9 @@
+C:\Users\Даниил\Desktop\Novikov\source\repos\Registry\Registry\x64\Release\Registry.vcxproj.AssemblyReference.cache
+C:\Users\Даниил\Desktop\Novikov\source\repos\Registry\Registry\x64\Release\Registry.RForm.resources
+C:\Users\Даниил\Desktop\Novikov\source\repos\Registry\Registry\x64\Release\Registry.vcxproj.GenerateResource.cache
+C:\Users\Даниил\Desktop\Novikov\source\repos\Registry\Registry\x64\Release\Registry.ReadRegDialog.resources
+D:\Labs\OperatingSystem\lab7\Registry\x64\Release\Registry.vcxproj.AssemblyReference.cache
+D:\Labs\OperatingSystem\lab7\Registry\x64\Release\Registry.ReadRegDialog.resources
+D:\Labs\OperatingSystem\lab7\Registry\x64\Release\Registry.RForm.resources
+D:\Labs\OperatingSystem\lab7\Registry\x64\Release\Registry.vcxproj.GenerateResource.cache
+D:\Labs\OperatingSystem\lab7\Registry\x64\Release\Registry.RegChangedDialog.resources
