@@ -43,10 +43,10 @@
   <p>Задача: Создать форму, в которой динамически будут выводится все окна, открытые в системе (в том числе и скрытые).<br>
     <p>В форме также присутствует кнопка для изменения размера основного окна через WinApi функцию SetWindowPos</p>
     <p>Приложение в работе:</p>
-    <img src="https://github.com/SynI20N/IT/blob/systems/lab6_sharp/images/2.jpg">
+    <img src="https://github.com/SynI20N/IT/blob/systems/lab6_sharp/images/2.png">
     <p>После изменений:</p>
-    <img src="https://github.com/SynI20N/IT/blob/systems/lab6_sharp/images/1.">
-    Запуск: <code>.\lab6\bin\Debug\lab8Windows.exe</code>
+    <img src="https://github.com/SynI20N/IT/blob/systems/lab6_sharp/images/1.png">
+    Запуск: <code>.\lab6\bin\Debug\lab6.exe</code>
   </p>
 <h2>lab7: CLR C++ Winforms Windows 10<br></h2>
   <p>Задача: Создать приложение, которое может управлять реестром, а именно:<br>
