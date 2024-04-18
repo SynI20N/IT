@@ -61,5 +61,7 @@
    <img src="https://github.com/SynI20N/IT/blob/systems/lab7/images/1.png">
    <p>После изменений:</p>
    <img src="https://github.com/SynI20N/IT/blob/systems/lab7/images/2.png">
+   <p>Запуск осуществлять исключительно от администратора!</p>
+   Запуск: <code>.\lab7\x64\Release\Registry.exe</code>
   </p>
     
