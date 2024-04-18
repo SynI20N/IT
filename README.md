@@ -43,9 +43,23 @@
   <p>Задача: Создать форму, в которой динамически будут выводится все окна, открытые в системе (в том числе и скрытые).<br>
     <p>В форме также присутствует кнопка для изменения размера основного окна через WinApi функцию SetWindowPos</p>
     <p>Приложение в работе:</p>
-    <img src="https://github.com/SynI20N/IT/blob/systems/lab6/images/2.jpg">
+    <img src="https://github.com/SynI20N/IT/blob/systems/lab6_sharp/images/2.jpg">
     <p>После изменений:</p>
-    <img src="https://github.com/SynI20N/IT/blob/systems/lab6/images/1.jpg">
+    <img src="https://github.com/SynI20N/IT/blob/systems/lab6_sharp/images/1.">
     Запуск: <code>.\lab6\bin\Debug\lab8Windows.exe</code>
+  </p>
+<h2>lab7: CLR C++ Winforms Windows 10<br></h2>
+  <p>Задача: Создать приложение, которое может управлять реестром, а именно:<br>
+   <ul>
+     <li>Создавать новые ключи в реестре</li>
+     <li>Считывать ключи в реестре</li>
+     <li>Удалять ключи из реестра</li>
+   </ul> 
+   Дополнительно была реализована кнопка Integrity Check, которая сохраняет ветку реестра<br>
+   и следить за её изменениями, и при изменении предлагает откатить реестр до исходного состояния<br>
+   <p>Приложение в работе:</p>
+   <img src="https://github.com/SynI20N/IT/blob/systems/lab7/images/1.png">
+   <p>После изменений:</p>
+   <img src="https://github.com/SynI20N/IT/blob/systems/lab7/images/2.png">
   </p>
     
