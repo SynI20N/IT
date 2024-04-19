@@ -39,14 +39,16 @@
     <p>Библиотека libform.so, код запуска driver </p>
     Запуск: <code>./lab5/driver</code>
   </p>
-<h2>lab6: SharpDevelop C# Windows10</h2>
+<h2>lab6: C Win32 Windows10</h2>
   <p>Задача: Создать форму, в которой динамически будут выводится все окна, открытые в системе (в том числе и скрытые).<br>
-    <p>В форме также присутствует кнопка для изменения размера основного окна через WinApi функцию SetWindowPos</p>
+    <p>В форме также присутствует кнопка для изменения размера всех окон через WinApi функцию SetWindowPos</p>
+    <p>Дополнительно программа создает дочернее окно в WinMain с помощью функции CreateWindow - ChildWindow</p>
     <p>Приложение в работе:</p>
-    <img src="https://github.com/SynI20N/IT/blob/systems/lab6_sharp/images/2.png">
-    <p>После изменений:</p>
-    <img src="https://github.com/SynI20N/IT/blob/systems/lab6_sharp/images/1.png">
-    Запуск: <code>.\lab6\bin\Debug\lab6.exe</code>
+    <img src="https://github.com/SynI20N/IT/blob/systems/lab6/images/1.png">
+    <img src="https://github.com/SynI20N/IT/blob/systems/lab6/images/2.png">
+    <img src="https://github.com/SynI20N/IT/blob/systems/lab6/images/3.png">
+    Компиляция: <code>gcc -o win.exe sysmets.c -luser32 -lkernel32 -lgdi32</code>
+    Запуск: <code>.\win.exe</code>
   </p>
 <h2>lab7: CLR C++ Winforms Windows 10<br></h2>
   <p>Задача: Создать приложение, которое может управлять реестром, а именно:<br>
