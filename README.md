@@ -47,7 +47,7 @@
     <img src="https://github.com/SynI20N/IT/blob/systems/lab6/images/1.png">
     <img src="https://github.com/SynI20N/IT/blob/systems/lab6/images/2.png">
     <img src="https://github.com/SynI20N/IT/blob/systems/lab6/images/3.png">
-    Компиляция: <code>gcc -o win.exe sysmets.c -luser32 -lkernel32 -lgdi32</code>
+    Компиляция: <code>gcc -o win.exe sysmets.c -luser32 -lkernel32 -lgdi32</code><br>
     Запуск: <code>.\win.exe</code>
   </p>
 <h2>lab7: CLR C++ Winforms Windows 10<br></h2>
