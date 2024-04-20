@@ -1,5 +1,6 @@
 #include <windows.h>
 #include <stdlib.h>
+#include <stdint.h>
 #include "sysmets.h"
 #include "resource.h"
 
@@ -17,6 +18,7 @@ BOOL CALLBACK EnumWindowsProcSize(_In_ HWND   hWnd,_In_ LPARAM lParam)
     SetWindowPos(hWnd, HWND_TOP, rect.left + 200, rect.top, width, height, SWP_NOACTIVATE);
     return TRUE;
 }
+
 
 void ChangeWindowSize() {
     // Сохранение текущего разрешения экрана
@@ -50,6 +52,20 @@ BOOL CALLBACK EnumWindowsProc(_In_ HWND   hWnd,_In_ LPARAM lParam)
         DrawText(drawHdc, name, -1, &rect, DT_SINGLELINE | DT_NOCLIP);
     }
     return 1;
+}
+
+
+void CALLBACK Wineventproc(
+  HWINEVENTHOOK hWinEventHook,
+  DWORD event,
+  HWND hwnd,
+  LONG idObject,
+  LONG idChild,
+  DWORD idEventThread,
+  DWORD dwmsEventTime
+) {
+    InvalidateRect(hwnd, NULL, TRUE);
+    SendMessage(hwnd, WM_PAINT, 0, 0);
 }
 
 BOOL CALLBACK EnumWindowsProcInit(_In_ HWND   hWnd,_In_ LPARAM lParam)
@@ -169,6 +185,7 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT message, WPARAM wParam, LPARAM lParam)
         SetScrollRange(hwnd, SB_VERT, 0, enumCount - 1, FALSE);
         SetScrollPos(hwnd, SB_VERT, iVscrollPos, TRUE);
         EnumWindows(EnumWindowsProcInit, 0);
+        SetWinEventHook(EVENT_SYSTEM_FOREGROUND, EVENT_SYSTEM_FOREGROUND, 0, Wineventproc, 0, 0, WINEVENT_OUTOFCONTEXT);
         return 0;
     case WM_SIZE:
         cyClient = HIWORD(lParam);
@@ -238,6 +255,7 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT message, WPARAM wParam, LPARAM lParam)
         return 0;
     case WM_DESTROY:
         PostQuitMessage(0);
+        UnhookWinEvent(0);
         return 0;
     }
     return DefWindowProc(hwnd, message, wParam, lParam);
