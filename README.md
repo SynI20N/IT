@@ -75,4 +75,5 @@
       <li></li>
     </ul>
   </p>
+  <p>Перед запуском: <code>choco install ffmpeg-full</code></p>
     
