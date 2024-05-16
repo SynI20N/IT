@@ -39,13 +39,41 @@
     <p>Библиотека libform.so, код запуска driver </p>
     Запуск: <code>./lab5/driver</code>
   </p>
-<h2>lab6: SharpDevelop C# Windows10</h2>
+<h2>lab6: C Win32 Windows10</h2>
   <p>Задача: Создать форму, в которой динамически будут выводится все окна, открытые в системе (в том числе и скрытые).<br>
-    <p>В форме также присутствует кнопка для изменения размера основного окна через WinApi функцию SetWindowPos</p>
+    <p>В форме также присутствует кнопка для изменения размера всех окон через WinApi функцию SetWindowPos</p>
+    <p>Дополнительно программа создает дочернее окно в WinMain с помощью функции CreateWindow - ChildWindow</p>
     <p>Приложение в работе:</p>
-    <img src="https://github.com/SynI20N/IT/blob/systems/lab6/images/2.jpg">
-    <p>После изменений:</p>
-    <img src="https://github.com/SynI20N/IT/blob/systems/lab6/images/1.jpg">
-    Запуск: <code>.\lab6\bin\Debug\lab8Windows.exe</code>
+    <img src="https://github.com/SynI20N/IT/blob/systems/lab6/images/1.png">
+    <img src="https://github.com/SynI20N/IT/blob/systems/lab6/images/2.png">
+    <img src="https://github.com/SynI20N/IT/blob/systems/lab6/images/3.png">
+    Компиляция: <code>gcc -o win.exe sysmets.c -luser32 -lkernel32 -lgdi32</code><br>
+    Запуск: <code>.\win.exe</code>
   </p>
+<h2>lab7: CLR C++ Winforms Windows 10<br></h2>
+  <p>Задача: Создать приложение, которое может управлять реестром, а именно:<br>
+   <ul>
+     <li>Создавать новые ключи в реестре</li>
+     <li>Считывать ключи в реестре</li>
+     <li>Удалять ключи из реестра</li>
+   </ul> 
+   Дополнительно была реализована кнопка Integrity Check, которая сохраняет ветку реестра<br>
+   и следить за её изменениями, и при изменении предлагает откатить реестр до исходного состояния<br>
+   <p>Приложение в работе:</p>
+   <img src="https://github.com/SynI20N/IT/blob/systems/lab7/images/1.png">
+   <p>После изменений:</p>
+   <img src="https://github.com/SynI20N/IT/blob/systems/lab7/images/2.png">
+   <p>Запуск осуществлять исключительно от администратора!</p>
+   Запуск: <code>.\lab7\x64\Release\Registry.exe</code>
+  </p>
+<h2>lab8: CLR C++ Winforms Windows 10<br></h2>
+  <p>Задача: Вывести окно для запуска программы с помощью ShellExecute</p>
+  <p>Дополнительная задача: Конвертировать с помощью ffmpeg видео, отображая при этом прогресс</p>
+  <p>Реализовано: 
+    <ul>
+      <li>Запуск программы find в проводнике</li>
+      <li></li>
+    </ul>
+  </p>
+  <p>Перед запуском: <code>choco install ffmpeg-full</code></p>
     
