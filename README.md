@@ -72,8 +72,10 @@
   <p>Реализовано: 
     <ul>
       <li>Запуск программы find в проводнике</li>
-      <li></li>
+      <li>Запуск утилиты ffmpeg для конвертации заданного файла в определенный формат</li>
     </ul>
   </p>
-  <p>Перед запуском: <code>choco install ffmpeg-full</code></p>
+  <p>Приложение в работе:</p>
+  <img src="https://github.com/SynI20N/IT/blob/systems/lab8/images/1.png">
+  <p>Перед запуском (PS): <code>choco install ffmpeg-full</code></p>
     
