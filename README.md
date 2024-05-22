@@ -78,4 +78,5 @@
   <p>Приложение в работе:</p>
   <img src="https://github.com/SynI20N/IT/blob/systems/lab8/images/1.png">
   <p>Перед запуском (PS): <code>choco install ffmpeg-full</code></p>
+  Запуск: <code>.\lab8\x64\Debug\lab8.exe</code>
     
