@@ -1,8 +1,14 @@
 #pragma once
+#include <Windows.h>
+#include <strsafe.h>
 #include <shlobj.h>
 #include <shlwapi.h>
 #include <objbase.h>
 #include <vcclr.h>
+#include <tchar.h>
+#include <string>
+
+#define MAX_CMD 500
 
 namespace lab8 {
 
@@ -44,6 +50,7 @@ namespace lab8 {
 	private: System::Windows::Forms::Label^ label1;
 	private: System::Windows::Forms::Button^ Open;
 	private: System::String^ _folderPath;
+	private: System::String^ _filePath;
 	private: System::Windows::Forms::Label^ label2;
 	private: System::Windows::Forms::Label^ label3;
 	private: System::Windows::Forms::Label^ label4;
@@ -161,7 +168,6 @@ namespace lab8 {
 			this->combo1->Name = L"combo1";
 			this->combo1->Size = System::Drawing::Size(121, 32);
 			this->combo1->TabIndex = 7;
-			this->combo1->SelectedIndexChanged += gcnew System::EventHandler(this, &MyForm::combo1_SelectedIndexChanged);
 			// 
 			// open1
 			// 
@@ -221,6 +227,38 @@ namespace lab8 {
 			this->PerformLayout();
 
 		}
+	private: System::Void ErrorExit(LPCTSTR lpszFunction)
+	{
+		// Retrieve the system error message for the last-error code
+
+		LPVOID lpMsgBuf;
+		LPVOID lpDisplayBuf;
+		DWORD dw = GetLastError();
+
+		FormatMessage(
+			FORMAT_MESSAGE_ALLOCATE_BUFFER |
+			FORMAT_MESSAGE_FROM_SYSTEM |
+			FORMAT_MESSAGE_IGNORE_INSERTS,
+			NULL,
+			dw,
+			MAKELANGID(LANG_NEUTRAL, SUBLANG_DEFAULT),
+			(LPTSTR)&lpMsgBuf,
+			0, NULL);
+
+		// Display the error message and exit the process
+
+		lpDisplayBuf = (LPVOID)LocalAlloc(LMEM_ZEROINIT,
+			(lstrlen((LPCTSTR)lpMsgBuf) + lstrlen((LPCTSTR)lpszFunction) + 100) * sizeof(TCHAR));
+		StringCchPrintf((LPTSTR)lpDisplayBuf,
+			LocalSize(lpDisplayBuf) / sizeof(TCHAR),
+			TEXT("%s failed with error %d: %s"),
+			lpszFunction, dw, lpMsgBuf);
+		::MessageBox(NULL, (LPCTSTR)lpDisplayBuf, TEXT("Error"), MB_OK);
+
+		LocalFree(lpMsgBuf);
+		LocalFree(lpDisplayBuf);
+		ExitProcess(dw);
+	}
 #pragma endregion
 	private: System::Void run_Click(System::Object^ sender, System::EventArgs^ e) {
 		if (_folderPath == nullptr)
@@ -228,6 +266,8 @@ namespace lab8 {
 			System::Windows::Forms::MessageBox::Show("Please, select folder", "Folder empty error",
 				System::Windows::Forms::MessageBoxButtons::OK,
 				System::Windows::Forms::MessageBoxIcon::Error);
+
+			return;
 		}
 		HWND hwnd = NULL;
 		pin_ptr<const wchar_t> folder = PtrToStringChars(_folderPath);
@@ -246,36 +286,64 @@ namespace lab8 {
 private: System::Void label5_Click(System::Object^ sender, System::EventArgs^ e) {
 }
 private: System::Void open1_Click(System::Object^ sender, System::EventArgs^ e) {
-}
-private: System::Void combo1_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) {
+	OpenFileDialog^ f = gcnew OpenFileDialog();
+	if (f->ShowDialog() == System::Windows::Forms::DialogResult::OK)
+	{
+		_filePath = f->FileName;
+	}
 }
 private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
+	if (_filePath == nullptr)
+	{
+		System::Windows::Forms::MessageBox::Show("Please, select file", "File not specified",
+			System::Windows::Forms::MessageBoxButtons::OK,
+			System::Windows::Forms::MessageBoxIcon::Error);
+
+		return;
+	}
+	if (combo1->SelectedItem == nullptr)
+	{
+		System::Windows::Forms::MessageBox::Show("Please, select extension", "Extension not specified",
+			System::Windows::Forms::MessageBoxButtons::OK,
+			System::Windows::Forms::MessageBoxIcon::Error);
+
+		return;
+	}
+	System::String^ ext = combo1->SelectedItem->ToString();
+	System::String^ result = System::IO::Path::GetFileName(_filePath);
+	System::String^ result2 = System::IO::Path::GetDirectoryName(_filePath);
+	System::String^ result3 = System::IO::Path::GetFileNameWithoutExtension(result) + "." + ext;
+	pin_ptr<const wchar_t> file = PtrToStringChars(result);
+	pin_ptr<const wchar_t> dir = PtrToStringChars(result2);
+	pin_ptr<const wchar_t> out = PtrToStringChars(result3);
+	HANDLE rPipe, wPipe;
+	CreatePipe(&rPipe, &wPipe, NULL, 0);
 	STARTUPINFO si;
 	PROCESS_INFORMATION pi;
 
 	ZeroMemory(&si, sizeof(si));
 	si.cb = sizeof(si);
 	ZeroMemory(&pi, sizeof(pi));
-	WCHAR* cmd = L"-y -i D:\\Labs\\OperatingSystem\\lab8\\x64\\Debug\\sample.mp4 D:\\Labs\\OperatingSystem\\lab8\\x64\\Debug\\sample.avi 1>D:\\Labs\\OperatingSystem\\lab8\\x64\\Debug\\output.txt 2>&1";
-	WCHAR* name = L"C:\\ProgramData\\chocolatey\\bin\\ffmpeg.exe";
+	wchar_t* cmdLine = (wchar_t*)malloc(sizeof(*cmdLine) * MAX_CMD);
+	wsprintf(cmdLine, L"-y -i \"%s\" \"%s\"", file, out);
+	wchar_t* appName = _tcsdup(TEXT("C:\\ProgramData\\chocolatey\\bin\\ffmpeg.exe"));
+	wchar_t* currDir = _tcsdup(dir);
 
 	// Start the child process. 
 	int code = CreateProcess(
-		name,			// No module name (use command line)
-		cmd,            // Command line
-		NULL,           // Process handle not inheritable
-		NULL,           // Thread handle not inheritable
-		FALSE,          // Set handle inheritance to FALSE
-		0,              // No creation flags
-		NULL,           // Use parent's environment block
-		NULL,           // Use parent's starting directory 
-		&si,            // Pointer to STARTUPINFO structure
-		&pi);           // Pointer to PROCESS_INFORMATION structure
+		appName,
+		cmdLine,
+		NULL, 
+		NULL,           
+		TRUE,         
+		CREATE_NO_WINDOW,              
+		NULL,           
+		currDir,           
+		&si,            
+		&pi);           
 
 	if (!code) {
-		System::Windows::Forms::MessageBox::Show(GetLastError().ToString(), "Error in CreateProcess",
-			System::Windows::Forms::MessageBoxButtons::OK,
-			System::Windows::Forms::MessageBoxIcon::Error);
+		ErrorExit(TEXT("CreateProcess"));
 	}
 	// Wait until child process exits.
 	WaitForSingleObject(pi.hProcess, INFINITE);
