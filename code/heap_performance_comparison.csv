@@ -1,0 +1,9 @@
+Heap Type,N,Find Min Time (sec per op),Delete Min Time (sec per op),Insert Time (sec per op),Max Insert Time (sec)
+BinaryHeap,1000,3.12e-08,1.155e-06,3.461e-07,5.7e-06
+BinomialHeap,1000,1.79e-08,1.99e-08,2.3799e-06,3.5e-05
+BinaryHeap,10000,3.08e-08,1.6168e-06,3.898e-07,1.9e-06
+BinomialHeap,10000,1.89e-08,2.55e-08,2.3116e-06,0.0001283
+BinaryHeap,100000,2.06e-08,1.2047e-06,2.777e-07,9e-07
+BinomialHeap,100000,1.73e-08,2.08e-08,2.4029e-06,3.01e-05
+BinaryHeap,1000000,2.06e-08,1.5852e-06,2.784e-07,1.5e-06
+BinomialHeap,1000000,2.02e-08,3.36e-08,2.5212e-06,4.23e-05

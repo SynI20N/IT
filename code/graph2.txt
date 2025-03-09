@@ -1,0 +1,9 @@
+Mean time: 0.00233214 seconds  for 10 minDegree 3
+Mean time: 0.00982214 seconds  for 20 minDegree 4
+Mean time: 0.0620626 seconds  for 50 minDegree 10
+Mean time: 0.208045 seconds  for 100 minDegree 20
+Mean time: 0.00300063 seconds  for 10 minDegree 3
+Mean time: 0.0109891 seconds  for 20 minDegree 4
+Mean time: 0.0583248 seconds  for 50 minDegree 10
+Mean time: 0.224219 seconds  for 100 minDegree 20
+Mean time: 0.739757 seconds  for 200 minDegree 35

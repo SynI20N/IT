@@ -1,0 +1,4 @@
+N,Find Min Time (sec per op),Delete Min Time (sec per op),Insert Time (sec per op),Max Insert Time (sec)
+1000,2.1201e-06,7.19e-08,1.4439e-06,3.42e-05
+10000,4.02248e-05,4.39e-07,1.3521e-06,4.78e-05
+100000,0.000459252,3.9876e-06,1.5938e-06,5.69e-05
