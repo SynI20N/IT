@@ -5,7 +5,7 @@ BinaryHeap::BinaryHeap() {
     heap.push_back(0);
 }
 
-BinaryHeap::BinaryHeap(std::vector<int> data) {
+BinaryHeap::BinaryHeap(std::vector<Node<int>> data) {
     heap.push_back(0);
     heap.resize(1 + data.size());
     std::copy(data.begin(), data.end(), heap.end());
@@ -19,17 +19,21 @@ BinaryHeap::BinaryHeap(std::vector<int> data) {
 BinaryHeap::~BinaryHeap() {}
 
 // Insert a value into the heap
-void BinaryHeap::insert(int value) {
+void BinaryHeap::insert(Node<int> value) {
     heap.push_back(value);
     heapify(heap.size() - 1);
 }
 
 // Get the minimum value from the heap (the root of the heap)
-int BinaryHeap::getMin() const {
+Node<int> BinaryHeap::getMin() const {
     if (heap.size() <= 1) {
         throw std::out_of_range("Heap is empty.");
     }
     return heap[1];
+}
+
+size_t BinaryHeap::getSize() const {
+    return heap.size();
 }
 
 // Remove the minimum value (root) from the heap
@@ -54,7 +58,7 @@ bool BinaryHeap::isEmpty() const {
 // Print the elements in the heap (excluding the dummy element at index 0)
 void BinaryHeap::print() const {
     for (size_t i = 1; i < heap.size(); ++i) {
-        std::cout << heap[i] << " ";
+        std::cout << heap[i].freq << " ";
     }
     std::cout << std::endl;
 }
@@ -65,10 +69,10 @@ void BinaryHeap::heapify(int index) {
     int rightChild = 2 * index + 1;
     int smallest = index;
 
-    if (leftChild < heap.size() && heap[leftChild] < heap[smallest]) {
+    if (leftChild < heap.size() && heap[leftChild].freq < heap[smallest].freq) {
         smallest = leftChild;
     }
-    if (rightChild < heap.size() && heap[rightChild] < heap[smallest]) {
+    if (rightChild < heap.size() && heap[rightChild].freq < heap[smallest].freq) {
         smallest = rightChild;
     }
 
@@ -79,8 +83,8 @@ void BinaryHeap::heapify(int index) {
 }
 
 // Swap two elements in the heap
-void BinaryHeap::swap(int& a, int& b) {
-    int temp = a;
+void BinaryHeap::swap(Node<int>& a, Node<int>& b) {
+    Node<int> temp = a;
     a = b;
     b = temp;
 }

@@ -4,23 +4,25 @@
 #include <vector>
 #include <stdexcept>
 #include <iostream>
+#include "BinaryTree.hpp"
 
 class BinaryHeap {
 public:
     BinaryHeap();
-    BinaryHeap(std::vector<int> data);
+    BinaryHeap(std::vector<Node<int>> data);
     ~BinaryHeap();
 
-    void insert(int value);
-    int getMin() const;
+    void insert(Node<int> value);
+    Node<int> getMin() const;
+    size_t getSize() const;
     void deleteMin();
     bool isEmpty() const;
     void print() const;
 
 private:
     void heapify(int index);
-    void swap(int& a, int& b);
-    std::vector<int> heap;
+    void swap(Node<int>& a, Node<int>& b);
+    std::vector<Node<int>> heap;
 };
 
 #endif // BINARYHEAP_HPP
