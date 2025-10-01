@@ -68,7 +68,7 @@ void test5()
 
 int main()
 {
-#ifdef TEST_LEO
+#ifdef TEST
     test1();
     test2();
     test3();
