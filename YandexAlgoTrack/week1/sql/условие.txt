@@ -1,0 +1,15 @@
+есть 2 таблицы:
+gift(int sender_id, int receiver_id, int cost, TIMESTAMP time) - подарок где:
+sender_id - отправитель,
+receiver_id - получатель,
+cost - стоимость подарка,
+time - время отправки подарка
+
+request_gift(int sender_id, int receiver_id, TIMESTAMP time_approved ) - запрос в друзья 
+sender_id - отправитель,
+receiver_id - получатель,
+time_approved - время подтверждения запроса (если запрос не подтвержден, то = NULL)
+
+Надо было подсчитать все пары людей, которые получили платные подарки,
+а после приняли запрос в друзья (то есть сначала один из людей должен отослать подарок,
+а потом оба должны подтвердить запрос в друзья (time_approved12 > time и time_approved12 is not NULL)).

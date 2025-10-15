@@ -11,7 +11,7 @@ float time(float a, float b, float c, float v0, float v1, float v2) {
     
     // path 2 == path 6
     float time2 = a / v0 + a / v1 + b / v0 + b / v1;
-    float time6 = b / v0 + b / v1 + a / v0 + a / v1;
+    //float time6 = b / v0 + b / v1 + a / v0 + a / v1;
 
     float time5 = b / v0 + b / v1 + a / v0 + (b+c) / v1;
     float time7 = b / v0 + c / v0 + c / v1 + b / v2;
@@ -20,7 +20,7 @@ float time(float a, float b, float c, float v0, float v1, float v2) {
     float time9 = a / v0 + a / v1 + (a+c) / v0 + (a+c) / v1;
     float time10 = b / v0 + b / v1 + (b+c) / v0 + (b+c) / v1;
 
-    std::vector<float> times {time1, time2, time3, time4, time5, time6, time7, time8, time9, time10};
+    std::vector<float> times {time1, time2, time3, time4, time5, time7, time8, time9, time10};
     std::sort(times.begin(), times.end());
 
     return times[0];
