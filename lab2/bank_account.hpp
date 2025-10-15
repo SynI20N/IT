@@ -1,15 +1,21 @@
+#ifndef BANK_ACCOUNT_HPP
+#define BANK_ACCOUNT_HPP
+
 #include "blockchain.hpp"
 #include <random>
+#include <memory>
 
 class BankAccount {
 public:
     BankAccount(int amount, ConcurrentBlockChain& logger);
-    ~BankAccount();
-    void Add(int money);
-    void Take(int money);
+    void add(int money);
+    void take(int money);
+    void add_random();
+    void take_random();
 private:
-    static std::mt19937* mt_;
-    ConcurrentBlockChain& logger_;
     long long amount_;
+    ConcurrentBlockChain& logger_;
     int id_;
 };
+
+#endif

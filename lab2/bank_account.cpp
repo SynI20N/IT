@@ -2,28 +2,20 @@
 #include <random>
 #include <stdexcept>
 
+std::mt19937 mt2(rand());
+
 BankAccount::BankAccount(int amount, ConcurrentBlockChain& logger) 
 : amount_(amount), logger_(logger) {
-    if(mt_ == nullptr) {
-        std::random_device randD;
-        mt_ = new std::mt19937(randD);
-    }
-    std::uniform_int_distribution <int> range(10e8, 10e9);
-    id_ = range(mt_);
+    id_ = std::uniform_int_distribution<int>(1000000, 10000000)(mt2);
 }
 
-BankAccount::~BankAccount() {
-    delete mt_;
-}
-
-void BankAccount::Add(int money) {
+void BankAccount::add(int money) {
     long long prev = amount_;
     amount_ += money;
-
-    logger_.Write(id_, prev, amount_);
+    logger_.write(id_, prev, amount_);
 }
 
-void BankAccount::Take(int money) {
+void BankAccount::take(int money) {
     long long prev = amount_;
     if(amount_ < money) {
         throw std::runtime_error(
@@ -31,6 +23,15 @@ void BankAccount::Take(int money) {
         );
     }
     amount_ -= money;
+    logger_.write(id_, prev, amount_);
+}
 
-    logger_.Write(id_, prev, amount_);
+void BankAccount::add_random() {
+    int money = std::uniform_int_distribution<int>(10, 50)(mt2);
+    add(money);
+}
+
+void BankAccount::take_random() {
+    int money = std::uniform_int_distribution<int>(10, 50)(mt2);
+    take(money);
 }
