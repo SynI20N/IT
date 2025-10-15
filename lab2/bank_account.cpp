@@ -1,12 +1,12 @@
 #include "bank_account.hpp"
-#include <random>
 #include <stdexcept>
 
-std::mt19937 mt2(rand());
+extern std::random_device rand_dev;
+extern std::mt19937 mt;
 
 BankAccount::BankAccount(int amount, ConcurrentBlockChain& logger) 
 : amount_(amount), logger_(logger) {
-    id_ = std::uniform_int_distribution<int>(1000000, 10000000)(mt2);
+    id_ = std::uniform_int_distribution<int>(1000000, 9000000)(mt);
 }
 
 void BankAccount::add(int money) {
@@ -27,11 +27,11 @@ void BankAccount::take(int money) {
 }
 
 void BankAccount::add_random() {
-    int money = std::uniform_int_distribution<int>(10, 50)(mt2);
+    int money = std::uniform_int_distribution<int>(10, 50)(mt);
     add(money);
 }
 
 void BankAccount::take_random() {
-    int money = std::uniform_int_distribution<int>(10, 50)(mt2);
+    int money = std::uniform_int_distribution<int>(10, 50)(mt);
     take(money);
 }

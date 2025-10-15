@@ -3,7 +3,6 @@
 
 #include "blockchain.hpp"
 #include <random>
-#include <memory>
 
 class BankAccount {
 public:

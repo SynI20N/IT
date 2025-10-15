@@ -1,26 +1,28 @@
 #include "blockchain.hpp"
 #include <random>
-#include <mutex>
 
-ConcurrentBlockChain::ConcurrentBlockChain(std::ostream& output, int chain_count, int max_transaction)
+extern std::random_device rand_dev;
+extern std::mt19937 mt;
+
+ConcurrentBlockChain::ConcurrentBlockChain(std::ostream& output, int chain_count, size_t max_transaction)
 : transactions_chain_(chain_count), o_(output) {
     max_trans_ = max_transaction;
 }
 
 void ConcurrentBlockChain::write(int id, int prev, int curr) {
-    std::lock_guard<std::recursive_mutex> lock(mutex_);
-    int i = rand() % transactions_chain_.size();
+    std::lock_guard<std::mutex> lock(mutex_);
+    int i = std::uniform_int_distribution<int>(0, transactions_chain_.size() - 1)(mt);
     std::string s;
-    s += std::to_string(id) + ' ' + std::to_string(prev) + ' ' + std::to_string(curr) + '\n';
+    s += '>' + std::to_string(id) + ':' + std::to_string(prev) + ':' + std::to_string(curr) + '\n';
     transactions_chain_[i].push_back(s);
-    if(transactions_chain_[i].size() == (size_t)max_trans_) {
+    if(transactions_chain_[i].size() == max_trans_) {
         archive(i);
+        transactions_chain_[i].clear();
     }
 }
 
 void ConcurrentBlockChain::archive(int chain_idx) {
-    std::lock_guard<std::recursive_mutex> lock(mutex_);
     for(std::string s : transactions_chain_[chain_idx]) {
-        o_ << s << std::to_string('\n');
+        o_ << s;
     }
 }

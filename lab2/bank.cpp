@@ -1,11 +1,15 @@
 #include "bank.hpp"
 #include <thread>
 
-std::mt19937 mt(rand());
+std::random_device rand_dev;
+std::mt19937 mt(rand_dev());
 
 Bank::Bank(int num_clients, ConcurrentBlockChain& chain) 
-: accounts_(num_clients, BankAccount(100, chain)), blockchain_(chain) {
-
+: blockchain_(chain) {
+    accounts_.reserve(num_clients);
+    for (int i = 0; i < num_clients; ++i) {
+        accounts_.emplace_back(100, chain);
+    }
 }
 
 void Bank::process_accounts(int begin, int end) {
