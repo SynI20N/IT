@@ -2,4 +2,4 @@ all:
 	g++ -std=c++11 -O2 -g E.cpp -o main
 
 test:
-	g++ -std=c++11 -DTEST -O0 -g E.cpp -o main
+	g++ -std=c++11 -DTEST -O2 -g E.cpp -o main
