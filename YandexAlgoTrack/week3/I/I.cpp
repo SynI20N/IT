@@ -3,6 +3,7 @@
 #include <vector>
 #include <cstring>
 #include <cassert>
+#include <algorithm>
 
 struct node {
 	node* left;
@@ -23,10 +24,13 @@ std::vector<std::string> tokenize(std::string& expr) {
             tokens.push_back(std::string(1, expr[i]));
         } 
 		else if (expr[i] >= 'a' && expr[i] <= 'z') {
-            tokens.push_back(std::string(1, expr[i]));
-        } 
-		else {
-            throw std::runtime_error("no such token");
+            std::string func;
+            while (i < expr.size() && (expr[i] >= 'a' && expr[i] <= 'z')) {
+                func += expr[i];
+                i++;
+            }
+            i--;
+            tokens.push_back(func);
         }
     }
     return tokens;
@@ -55,14 +59,12 @@ private:
         return pos_ < tokens_.size() ? tokens_[pos_] : "";
     }
 
+	bool is_function(const std::string& token) {
+        return token == "abs" || token == "sin" || token == "cos";
+    }
+
     std::string consume(const std::string& expected = "") {
-        if (pos_ >= tokens_.size()) {
-			throw std::runtime_error("end of input");
-		}
         std::string current = tokens_[pos_++];
-        if (!expected.empty() && current != expected) {
-            throw std::runtime_error("expected '" + expected + "', got '" + current + "'");
-		}
         return current;
     }
 
@@ -86,14 +88,21 @@ private:
         return n;
     }
 
-    node* parse_elem_token() {
+	node* parse_elem_token() {
         if (peek() == "(") {
             consume("(");
             node* n = parse();
             consume(")");
             return n;
         } 
-		else {
+        else if (is_function(peek())) {
+            std::string func = consume();
+            consume("(");
+            node* arg = parse();
+            consume(")");
+            return new node(func, arg);
+        }
+        else {
             return parse_variable();
         }
     }
@@ -119,36 +128,39 @@ result draw_tree(node* n) {
     std::string s = "-[" + n->value + "]-";
     int s_len = s.size();
 
-    if(!n->right) {
+	if (!n->right) {
+        std::string s = "[" + n->value + "]";
         result l = draw_tree(n->left);
-        std::string first = std::string(l.root_pos + 1, '.') + std::string(l.width - l.root_pos - 1, '-') + s;
-        std::string second = std::string(l.root_pos, ' ') + '|' + std::string(l.width - l.root_pos - 1 + s_len, ' ');
+        
+        std::string first = s + std::string(l.root_pos, ' ') + '.';
+        std::string second = std::string(s.size(), ' ') + std::string(l.root_pos, ' ') + '|';
+        
+        int total_width = s.size() + l.width;
+        int total_height = l.height + 2;
+        
         std::vector<std::string> new_lines = {first, second};
-        for (std::string& line : l.lines) {
-            new_lines.push_back(line + std::string(s_len, ' '));
+        for(int i = 0; i < l.height; i++) {
+            new_lines.push_back(std::string(s.size(), ' ') + l.lines[i]);
         }
-        return {new_lines, l.width + s_len, l.height + 2, l.width + s_len / 2};
-    }
-
-    if(!n->left) {
-        result r = draw_tree(n->right);
-        std::string first = s + std::string(r.root_pos, '-') + std::string(r.width - r.root_pos, '.');
-        std::string second = std::string(s_len + r.root_pos, ' ') + '|' + std::string(r.width - r.root_pos - 1, ' ');
-        std::vector<std::string> new_lines = {first, second};
-        for (std::string& line : r.lines) {
-            new_lines.push_back(std::string(s_len, ' ') + line);
-        }
-        return {new_lines, r.width + s_len, r.height + 2, s_len / 2};
+        
+        return {new_lines, total_width, total_height, s.size() + l.root_pos};
     }
 
     result l = draw_tree(n->left);
     result r = draw_tree(n->right);
 
-    std::string first = std::string(l.root_pos + 1, '.') + std::string(l.width - l.root_pos - 1, '-') +
-                   s +
-                   std::string(r.root_pos, '-') + std::string(r.width - r.root_pos, '.');
-    std::string second = std::string(l.root_pos, ' ') + '|' +
-                    std::string(l.width - l.root_pos - 1 + s_len + r.root_pos, ' ') + '|';
+    std::string first = 
+		std::string(l.root_pos, ' ') + 
+		'.' +
+		std::string(l.width - l.root_pos - 1, '-') +
+        s +
+        std::string(r.root_pos, '-') + 
+		'.' +
+		std::string(r.width - r.root_pos - 1, ' ');
+    std::string second = 
+		std::string(l.root_pos, ' ') + '|' +
+        std::string(l.width - l.root_pos - 1 + s_len + r.root_pos, ' ') + '|' +
+		std::string(r.width - r.root_pos - 1, ' ');
 
     int total_width = l.width + r.width + s_len;
     int total_height = std::max(l.height, r.height) + 2;
@@ -214,8 +226,8 @@ void test3() {
 	std::string input("a+b");
 	std::vector<std::string> res_int = get_string_repr(input);
 	std::vector<std::string> answ = {
-		".-[+]-."
-		"|     |"
+		".-[+]-.",
+		"|     |",
 		"a     b"
 	};
 	assert(res_int.size() == answ.size());
@@ -229,8 +241,8 @@ void test4() {
 	std::string input("a^b");
 	std::vector<std::string> res_int = get_string_repr(input);
 	std::vector<std::string> answ = {
-		".-[^]-."
-		"|     |"
+		".-[^]-.",
+		"|     |",
 		"a     b"
 	};
 	assert(res_int.size() == answ.size());
@@ -248,7 +260,45 @@ void test5() {
 		"|        |   ",
 		"a     .-[*]-.",
 		"      |     |",
-		"      b     c",
+		"      b     c"
+	};
+	assert(res_int.size() == answ.size());
+	for(int i = 0; i < res_int.size(); i++) {
+		assert(res_int[i] == answ[i]);
+	}
+	std::cout << "OK!\n";
+}
+
+void test6() {
+	std::string input("((b*f*a+((m/m)*m)))");
+	std::vector<std::string> res_int = get_string_repr(input);
+	std::vector<std::string> answ = {
+		"         .----[+]----------.   ",
+		"         |                 |   ",
+		"   .----[*]-.        .----[*]-.",
+		"   |        |        |        |",
+		".-[*]-.     a     .-[/]-.     m",
+		"|     |           |     |      ",
+		"b     f           m     m      "
+	};
+	assert(res_int.size() == answ.size());
+	for(int i = 0; i < res_int.size(); i++) {
+		assert(res_int[i] == answ[i]);
+	}
+	std::cout << "OK!\n";
+}
+
+void test7() {
+	std::string input("a^a^a^a");
+	std::vector<std::string> res_int = get_string_repr(input);
+	std::vector<std::string> answ = {
+		".-[^]----.         ",
+		"|        |         ",
+		"a     .-[^]----.   ",
+		"      |        |   ",
+		"      a     .-[^]-.",
+		"            |     |",
+		"            a     a"
 	};
 	assert(res_int.size() == answ.size());
 	for(int i = 0; i < res_int.size(); i++) {
@@ -260,10 +310,11 @@ void test5() {
 int main() {
 #ifdef TEST
 	test1();
-	test2(); //прошел
+	test2();
 	test3();
 	test4();
 	test5();
+	test6();
 	std::cout << "all tests passed!\n";	
 	return 0;
 #endif
