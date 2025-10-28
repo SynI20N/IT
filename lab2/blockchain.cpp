@@ -1,5 +1,6 @@
 #include "blockchain.hpp"
 #include <random>
+#include <iostream>
 
 extern std::random_device rand_dev;
 extern std::mt19937 mt;
@@ -18,10 +19,16 @@ void ConcurrentBlockChain::write(int id, int prev, int curr) {
     if(transactions_chain_[i].size() == max_trans_) {
         archive(i);
         transactions_chain_[i].clear();
+        std::cout << "cleared " << i << '\n';
     }
 }
 
+ConcurrentBlockChain::~ConcurrentBlockChain() {
+    o_.clear();
+}
+
 void ConcurrentBlockChain::archive(int chain_idx) {
+    o_ << "archiving chain " << chain_idx << '\n';
     for(std::string s : transactions_chain_[chain_idx]) {
         o_ << s;
     }

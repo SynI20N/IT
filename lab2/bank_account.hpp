@@ -11,6 +11,8 @@ public:
     void take(int money);
     void add_random();
     void take_random();
+    long long get_amount() const;
+    int get_id() const;
 private:
     long long amount_;
     ConcurrentBlockChain& logger_;

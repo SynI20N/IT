@@ -35,3 +35,11 @@ void BankAccount::take_random() {
     int money = std::uniform_int_distribution<int>(10, 50)(mt);
     take(money);
 }
+
+int BankAccount::get_id() const{
+    return id_;
+}
+
+long long BankAccount::get_amount() const{
+    return amount_;
+}

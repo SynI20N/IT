@@ -39,3 +39,11 @@ void Bank::simulate(int num_threads) {
         thread.join();
     }
 }
+
+size_t Bank::get_accounts_count() const {
+    return accounts_.size();
+}
+
+BankAccount Bank::get_account(int i) {
+    return accounts_[i];
+}
