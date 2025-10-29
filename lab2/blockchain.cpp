@@ -19,7 +19,6 @@ void ConcurrentBlockChain::write(int id, int prev, int curr) {
     if(transactions_chain_[i].size() == max_trans_) {
         archive(i);
         transactions_chain_[i].clear();
-        std::cout << "cleared " << i << '\n';
     }
 }
 
