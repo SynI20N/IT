@@ -14,16 +14,23 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: installation
-      run: cd lab2
       run: sudo apt install -y googletest libgtest-dev build-essential gcovr
+
+    - name: run in lab2
+      run: cd lab2
+
     - name: Compile main
       run: make
+
     - name: run main
       run: ./main
+
     - name: Compile unit tests with coverage
       run: make coverage
+
     - name: run unit tests
       run: ./main
+      
     - name: Generate coverage report
       run: gcovr -r . --xml-pretty -o coverage.xml --gcov-ignore-parse-errors all
 
