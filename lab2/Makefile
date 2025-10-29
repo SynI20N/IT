@@ -19,7 +19,7 @@ SRC_TEST = $(TEST_DIR)/bank_account_test.cpp \
 # Имя выходного файла
 TARGET = main
 
-.PHONY: all debug test clean
+.PHONY: all debug test coverage clean
 
 all:
 	g++ $(FLAGS) -O2 $(SRC) -pthread -o $(TARGET)
@@ -29,6 +29,10 @@ debug:
 
 test:
 	g++ $(FLAGS) -DTEST -O0 $(SRC) $(SRC_TEST) -pthread -g -o $(TARGET) -lgtest
+
+
+coverage:
+	g++ $(FLAGS) -DTEST -fprofile-arcs -ftest-coverage -O0 -g $(SRC) $(SRC_TEST) -pthread -o $(TARGET) -lgtest
 
 clean:
 	rm -f $(TARGET)
