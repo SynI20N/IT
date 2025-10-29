@@ -8,36 +8,42 @@ on:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     steps:
     - uses: actions/checkout@v3
-    - name: installation
-      run: sudo apt install -y googletest libgtest-dev build-essential gcovr
 
-    - name: run in lab2
-      run: cd lab2
+    - name: Install dependencies
+      run: |
+        sudo apt update
+        sudo apt install -y googletest libgtest-dev build-essential gcovr
 
-    - name: find environment
-      run: ls
+    - name: Navigate to lab2
+      run: cd lab2 && ls -la
+
+    - name: Check for Makefile
+      run: |
+        if [ ! -f "lab2/Makefile" ]; then
+          echo "Error: Makefile not found in lab2/"
+          exit 1
+        fi
 
     - name: Compile main
-      run: make
+      run: cd lab2 && make
 
-    - name: run main
-      run: ./main
+    - name: Run main
+      run: cd lab2 && ./main
 
     - name: Compile unit tests with coverage
-      run: make coverage
+      run: cd lab2 && make coverage
 
-    - name: run unit tests
-      run: ./main
+    - name: Run unit tests
+      run: cd lab2 && ./main
 
     - name: Generate coverage report
-      run: gcovr -r . --xml-pretty -o coverage.xml --gcov-ignore-parse-errors all
+      run: cd lab2 && gcovr -r . --xml-pretty -o coverage.xml --gcov-ignore-parse-errors
 
-    - name: Upload coverage reports to Codecov
+    - name: Upload coverage to Codecov
       uses: codecov/codecov-action@v5
       with:
         token: ${{ secrets.CODECOV_TOKEN }}
