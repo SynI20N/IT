@@ -1,0 +1,1 @@
+[![Test Coverage](https://codecov.io/gh/SynI20N/IT/branch/parallel/graph/badge.svg)](https://codecov.io/gh/SynI20N/IT)
