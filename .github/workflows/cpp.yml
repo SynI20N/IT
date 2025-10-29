@@ -19,6 +19,9 @@ jobs:
     - name: run in lab2
       run: cd lab2
 
+    - name: find environment
+      run: ls
+
     - name: Compile main
       run: make
 
@@ -30,7 +33,7 @@ jobs:
 
     - name: run unit tests
       run: ./main
-      
+
     - name: Generate coverage report
       run: gcovr -r . --xml-pretty -o coverage.xml --gcov-ignore-parse-errors all
 
