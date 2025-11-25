@@ -1,4 +1,4 @@
-#include "SHA256.h"
+#include "sha256.hpp"
 #include <cstring>
 #include <sstream>
 #include <iomanip>
@@ -143,7 +143,7 @@ void SHA256::revert(std::array<uint8_t, 32> & hash) {
 	}
 }
 
-std::string SHA256::toString(const word32 *digest) {
+std::string SHA256::toString(const std::array<uint8_t, 32> & digest) {
 	std::stringstream s;
 	s << std::setfill('0') << std::hex;
 
@@ -152,4 +152,33 @@ std::string SHA256::toString(const word32 *digest) {
 	}
 
 	return s.str();
+}
+
+void SHA256::InitState(word32* state) {
+    // Reset all internal state
+    m_blocklen = 0;
+    m_bitlen = 0;
+    m_state[0] = 0x6a09e667;
+    m_state[1] = 0xbb67ae85;
+    m_state[2] = 0x3c6ef372;
+    m_state[3] = 0xa54ff53a;
+    m_state[4] = 0x510e527f;
+    m_state[5] = 0x9b05688c;
+    m_state[6] = 0x1f83d9ab;
+    m_state[7] = 0x5be0cd19;
+    std::memset(m_data, 0, 64);
+    
+    // Copy initial state to output
+    std::memcpy(state, m_state, 32);
+}
+
+void SHA256::Transform(word32 *digest, const word32 *data) {
+    // Must reset state before each use
+    m_blocklen = 0;
+    m_bitlen = 0;
+    std::memset(m_data, 0, 64);
+    
+    update(reinterpret_cast<const uint8_t*>(data), 64);
+    std::array<uint8_t, 32> byte_array = this->digest();
+    std::memcpy(digest, byte_array.data(), 32);
 }

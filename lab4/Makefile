@@ -24,7 +24,7 @@ all:
 	g++ $(FLAGS) -fopenmp -O2 $(SRC) -pthread -o $(TARGET)
 
 debug:
-	g++ $(FLAGS) -fopenmp -O2 $(SRC) -pthread -g -o $(TARGET)
+	g++ $(FLAGS) -fopenmp -O0 $(SRC) -pthread -g -o $(TARGET)
 
 test:
 	g++ $(FLAGS) -fopenmp -DTEST -O0 $(SRC) $(SRC_TEST) -pthread -g -o $(TARGET) -lgtest

@@ -14,7 +14,10 @@ public:
 	void update(const std::string &data);
 	std::array<uint8_t, 32> digest();
 
-	static std::string toString(const word32 *digest);
+	static std::string toString(const std::array<uint8_t, 32> & digest);
+
+    void InitState(word32 *state);
+	void Transform(word32 *digest, const word32 *data);
 
 private:
 	uint8_t  m_data[64];
