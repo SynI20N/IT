@@ -12,6 +12,9 @@
 #include "gtest/gtest.h"
 #endif
 
+#ifdef TEST
+
+#else
 // Helper function to compute hash using HashFunction interface
 template <typename T>
 void compute_hash_generic(const char* password, word32* hash) {
@@ -58,6 +61,7 @@ void print_hash_bytes(const std::array<uint8_t, 32>& hash) {
     }
     std::cout << std::dec;
 }
+#endif
 
 int main(int argc, char** argv) {
 #ifdef TEST
@@ -76,54 +80,54 @@ int main(int argc, char** argv) {
     std::cout << "============================\n\n";
     
     // Test MD5
-    // std::cout << "=== MD5 Hash Testing ===\n\n";
-    // for (int threads : thread_counts) {
-    //     omp_set_num_threads(threads);
+    std::cout << "=== MD5 Hash Testing ===\n\n";
+    for (int threads : thread_counts) {
+        omp_set_num_threads(threads);
         
-    //     std::cout << "Testing with " << threads << " thread(s):\n";
-    //     std::cout << std::string(70, '-') << "\n";
+        std::cout << "Testing with " << threads << " thread(s):\n";
+        std::cout << std::string(70, '-') << "\n";
         
-    //     double total_time = 0.0;
-    //     int successful_cracks = 0;
+        double total_time = 0.0;
+        int successful_cracks = 0;
         
-    //     for (int i = 0; i < 10; i++) {
-    //         const char* original_password = test_passwords[i];
+        for (int i = 0; i < 10; i++) {
+            const char* original_password = test_passwords[i];
             
-    //         // Compute target hash
-    //         word32 target_hash[4];
-    //         compute_md5_hash(original_password, target_hash);
+            // Compute target hash
+            word32 target_hash[4];
+            compute_md5_hash(original_password, target_hash);
             
-    //         std::cout << "Test " << (i + 1) << ": Password = \"" << original_password << "\"\n";
-    //         std::cout << "  MD5 Hash = ";
-    //         print_hash(target_hash, 4);
-    //         std::cout << "\n";
+            std::cout << "Test " << (i + 1) << ": Password = \"" << original_password << "\"\n";
+            std::cout << "  MD5 Hash = ";
+            print_hash(target_hash, 4);
+            std::cout << "\n";
             
-    //         // Try to crack it
-    //         Hacker<MD5> hacker;
-    //         char cracked_password[16] = {0};
+            // Try to crack it
+            Hacker<MD5> hacker;
+            char cracked_password[16] = {0};
             
-    //         auto start = std::chrono::high_resolution_clock::now();
-    //         bool success = hacker.hack(target_hash, cracked_password);
-    //         auto end = std::chrono::high_resolution_clock::now();
+            auto start = std::chrono::high_resolution_clock::now();
+            bool success = hacker.hack(target_hash, cracked_password);
+            auto end = std::chrono::high_resolution_clock::now();
             
-    //         double elapsed = std::chrono::duration<double>(end - start).count();
-    //         total_time += elapsed;
+            double elapsed = std::chrono::duration<double>(end - start).count();
+            total_time += elapsed;
             
-    //         if (success) {
-    //             successful_cracks++;
-    //             std::cout << "  ✓ Cracked: \"" << cracked_password << "\" in " 
-    //                      << std::fixed << std::setprecision(3) << elapsed << "s\n";
-    //         } else {
-    //             std::cout << "  ✗ Failed to crack in " 
-    //                      << std::fixed << std::setprecision(3) << elapsed << "s\n";
-    //         }
-    //         std::cout << "\n";
-    //     }
+            if (success) {
+                successful_cracks++;
+                std::cout << "  ✓ Cracked: \"" << cracked_password << "\" in " 
+                         << std::fixed << std::setprecision(3) << elapsed << "s\n";
+            } else {
+                std::cout << "  ✗ Failed to crack in " 
+                         << std::fixed << std::setprecision(3) << elapsed << "s\n";
+            }
+            std::cout << "\n";
+        }
         
-    //     std::cout << "Summary: " << successful_cracks << "/10 cracked, "
-    //               << "Average time: " << std::fixed << std::setprecision(3) 
-    //               << (total_time / 10.0) << "s\n\n";
-    // }
+        std::cout << "Summary: " << successful_cracks << "/10 cracked, "
+                  << "Average time: " << std::fixed << std::setprecision(3) 
+                  << (total_time / 10.0) << "s\n\n";
+    }
     
     // Test SHA256
     std::cout << "\n=== SHA256 Hash Testing ===\n\n";

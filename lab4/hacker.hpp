@@ -1,5 +1,9 @@
+#ifndef HACKER_H
+#define HACKER_H
+
 #include "hash_func.hpp"
 #include "md5.hpp"
+#include "sha256.hpp"
 #include <type_traits>
 #include <omp.h>
 #include <cstring>
@@ -122,3 +126,5 @@ private:
         return found;
     }
 };
+
+#endif
