@@ -18,30 +18,30 @@ jobs:
         sudo apt update
         sudo apt install -y googletest libgtest-dev build-essential gcovr
 
-    - name: Navigate to lab2
-      run: cd lab2 && ls -la
+    - name: Navigate to lab4
+      run: cd lab4 && ls -la
 
     - name: Check for Makefile
       run: |
-        if [ ! -f "lab2/Makefile" ]; then
-          echo "Error: Makefile not found in lab2/"
+        if [ ! -f "lab4/Makefile" ]; then
+          echo "Error: Makefile not found in lab4/"
           exit 1
         fi
 
     - name: Compile main
-      run: cd lab2 && make
+      run: cd lab4 && make
 
     - name: Run main
-      run: cd lab2 && ./main
+      run: cd lab4 && ./main
 
     - name: Compile unit tests with coverage
-      run: cd lab2 && make coverage
+      run: cd lab4 && make coverage
 
     - name: Run unit tests
-      run: cd lab2 && ./main
+      run: cd lab4 && ./main
 
     - name: Generate coverage report
-      run: cd lab2 && gcovr -r . --xml-pretty -o coverage.xml --gcov-ignore-parse-errors
+      run: cd lab4 && gcovr -r . --xml-pretty -o coverage.xml --gcov-ignore-parse-errors
 
     - name: Upload coverage to Codecov
       uses: codecov/codecov-action@v5

@@ -20,7 +20,6 @@ void ConcurrentBlockChain::write(int id, int prev, int curr) {
         archive(i);
         transactions_chain_[i].clear();
     }
-    //
 }
 
 ConcurrentBlockChain::~ConcurrentBlockChain() {

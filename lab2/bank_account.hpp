@@ -4,6 +4,9 @@
 #include "blockchain.hpp"
 #include <random>
 
+/**
+ * @brief Банковский аккаунт клиента
+ */
 class BankAccount {
 public:
     BankAccount(int amount, ConcurrentBlockChain& logger);

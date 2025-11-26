@@ -23,6 +23,11 @@ public:
         std::lock_guard<std::mutex> lock(mutex_);
         LogEntry entry{account_id, prev_amount, new_amount};
         log.push_back(entry);
+        if(log.size() == max_trans_) {
+            archive(i);
+            log.clear();5
+        }
+    }
     }
 
     // Вспомогательные методы для проверок в тестах

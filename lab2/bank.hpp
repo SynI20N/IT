@@ -3,6 +3,11 @@
 
 #include "bank_account.hpp"
 
+/**
+ * @brief Банк, который обслуживает клиентов
+ * @private accounts_ Количество клиентов
+ * @private blockchain_ Цепь для сохранения транзакций
+ */
 class Bank {
 public:
     Bank(int num_clients, ConcurrentBlockChain& chain);

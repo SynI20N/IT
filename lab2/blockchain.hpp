@@ -6,6 +6,12 @@
 #include <vector>
 #include <mutex>
 
+/**
+ * @brief Цепь для хранения транзакций
+ * @private max_trans_ Максимальное количество транзакций в каждой цепи
+ * @private transactions_chain_ Цепь для сохранения транзакций
+ * @private o_ Поток вывода (сохранения) данных
+ */
 class ConcurrentBlockChain {
 public:
     ConcurrentBlockChain(std::ostream& output, int chain_count, size_t max_transaction);
